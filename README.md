@@ -30,7 +30,8 @@ The demo of the website is hosted locally using Docker. Clone the repository and
 - Use filters to narrow down contact searches based on specific fields.  
 
 ### **Archive Management:**
-- View recently deleted contacts in an **archive**.  
+- View recently deleted contacts in an **archive**.
+- Users can restore the contacts back from **archive**
 
 ### **Design and Usability:**
 - A clean, responsive user interface designed for simplicity and efficiency.  
