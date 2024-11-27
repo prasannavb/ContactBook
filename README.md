@@ -110,4 +110,5 @@ type ArchiveContact struct {
     ReportingManager    string    `json:"reporting_manager"`
 }
 ```
+<h3>Copyright ©2024 All rights reserved |Designed by Prasanna V B</h3>
 
