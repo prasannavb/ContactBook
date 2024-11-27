@@ -1,0 +1,118 @@
+/* Form.css */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+
+  .modal-content {
+    background: #fff;
+    padding:1% 2%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 35%;
+    text-align: center;
+  }
+  
+  .modal-content  h2{
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .form-group {
+    margin-bottom:2.5%;
+    text-align: left;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding:2%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+  }
+  
+  .form-group input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  .button-group {
+    margin-top: 2.5%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .primary-btn, .secondary-btn {
+    padding: 2% 4%;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s background-color;
+  }
+  
+  .primary-btn {
+    background-color: #48cf7a;
+    color: white;
+  }
+  
+  .primary-btn:hover {
+    background-color: #3dad66;
+  }
+  
+  .secondary-btn {
+    background-color: #C70000;
+    color: white;
+  }
+  
+  .secondary-btn:hover {
+    background-color: #8B0000 ;
+  }
+  @media (max-width: 768px) {
+    .modal-content {
+        width: 60%; 
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        width: 90%; 
+        padding: 2% 4%; 
+    }
+
+    .form-group {
+        margin-bottom: 3.5%; 
+    }
+
+    .form-group input {
+        padding: 3%; 
+        font-size: 0.8rem; 
+    }
+
+    .button-group {
+        margin-top: 3.5%; 
+    }
+
+    .primary-btn, .secondary-btn {
+        padding: 3% 6%; 
+        font-size: 0.8rem; 
+    }
+}

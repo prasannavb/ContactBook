@@ -1,0 +1,29 @@
+.Archive
+{
+    background-color:#111828;
+    width: 100%;
+    height:100vh;
+    padding-bottom:2%;
+    overflow-y: auto; 
+    display: flex;
+    flex-direction: column;
+}
+.Archive-card-deck
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+@media (max-width: 768px) {
+    .Archive {
+        padding: 10px; 
+    }
+
+    .Archive-card-deck {
+        justify-content:space-evenly;
+    }
+
+}
