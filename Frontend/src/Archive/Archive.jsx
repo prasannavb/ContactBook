@@ -1,6 +1,7 @@
 //Dependencies
 import { useEffect, useState } from "react"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 //Modules
 import Navbar from "../Navbar/Navbar"
@@ -13,6 +14,8 @@ const Archive=()=>
   const [contacts,setContact]=useState([])
   const [availbaleContacts,setAvailableContacts]=useState([])
   const [isFlipped, setIsFlipped] = useState(false);
+  const navigate=useNavigate()
+
   const handleCardFlip = () => { 
   setIsFlipped(!isFlipped);
   };
@@ -52,7 +55,17 @@ const Archive=()=>
       setContact(filteredContacts)
       }
     }
-
+    const restoreContact = async (contact) => {
+      try {
+          const { data } = await axios.post('http://localhost:8080/restorecontact', contact);
+          alert("Contact restored successfully");
+          fetchArchiveContacts(sessionStorage.getItem('userId'));
+      } catch (error) {
+          console.error("Error restoring contact:", error);
+          alert("Failed to restore contact. Please try again.");
+      }
+  };
+  
     return(
         <>
             <div className="Archive" >
@@ -103,6 +116,9 @@ const Archive=()=>
                                     </div>
                                     <div>
                                       <b>Reports to:</b> <span>{data.reporting_manager}</span>
+                                    </div>
+                                    <div className='Archive-btns'>
+                                      <button onClick={()=>{restoreContact(data)}}>Restore</button>
                                     </div>
                                   </div>
                                 </div>

@@ -8,7 +8,7 @@ import (
 	"strings"
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
-
+	"golang.org/x/crypto/bcrypt"
 )
 
 func SignUp(c *gin.Context){
@@ -17,6 +17,12 @@ func SignUp(c *gin.Context){
 		c.JSON(http.StatusBadRequest,gin.H{"error":err.Error()})
 		return
 	}
+	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(users.Password), bcrypt.DefaultCost)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Error hashing password"})
+		return
+	}
+	users.Password = string(hashedPassword)
 	result := database.DB.Create(&users)
     if result.Error != nil {
         c.JSON(http.StatusInternalServerError, gin.H{"message":"User account already exist"})
@@ -36,9 +42,14 @@ func Login(c *gin.Context){
 		return
 	}
 
-	result := database.DB.Where("email = ? AND password = ?", userInput.Email, userInput.Password).First(&user)
+	result := database.DB.Where("email = ?", userInput.Email).First(&user)
 	if result.Error!=nil{
 		c.JSON(http.StatusUnauthorized,gin.H{"message":"User doesnt exist"})
+		return
+	}
+	err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(userInput.Password))
+	if err != nil {
+		c.JSON(http.StatusUnauthorized, gin.H{"message": "Invalid password"})
 		return
 	}
 	c.JSON(http.StatusOK,gin.H{"id":user.ID})
@@ -169,3 +180,38 @@ func ArchiveContact(c *gin.Context){
 
 	c.JSON(http.StatusOK,gin.H{"contact_list":archive})
 }
+
+func RestoreContact(c *gin.Context){
+
+	var archivedContact models.ArchiveContact
+	if err:=c.ShouldBindJSON(&archivedContact); err!=nil{
+		c.JSON(http.StatusBadRequest, gin.H{"error":err.Error()})
+		return
+	}
+	   if err := database.DB.First(&archivedContact,archivedContact.ID).Error; err != nil {
+		   c.JSON(http.StatusNotFound, gin.H{"error": "Archived contact not found"})
+		   return
+	   }
+
+		newContact := models.Contact{
+			UserID:            archivedContact.UserID,
+			ContactName:       archivedContact.ContactName,
+			ContactEmail:      archivedContact.ContactEmail,
+			ContactPhoneNumber: archivedContact.ContactPhoneNumber,
+			Address:           archivedContact.Address,
+			Designation:       archivedContact.Designation,
+			ReportingManager:  archivedContact.ReportingManager,
+		}
+	
+		if err := database.DB.Create(&newContact).Error; err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to restore contact"})
+			return
+		}
+
+		if err := database.DB.Delete(&archivedContact).Error; err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to delete archived contact"})
+			return
+		}
+		c.JSON(http.StatusOK, gin.H{"message":"Contact restored successfully"})
+
+    }
