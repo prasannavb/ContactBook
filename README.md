@@ -14,8 +14,7 @@ Welcome to the **Contact List Application**, a user-friendly platform that allow
 
 
 ## **Demo**
-The demo of the website is hosted locally using Docker. Clone the repository and follow the installation steps to see it in action.
-
+The demo of the website <a href="https://drive.google.com/file/d/1qTKOvckBG8hj6f0D6PntjNquQ-2jxxMX/view?usp=sharing" target="_blank">link</a>
 
 ## **Features**
 ### **User Authentication:**
@@ -131,5 +130,6 @@ type ArchiveContact struct {
 	<li><code>POST /restorecontact</code> Restore the contacts from archive</li>
 	<li><code>DELETE /deletearchivecontact/:id</code> Permanantely delete a contact from archive</li>
 </ul>
+
 <h3>Copyright ©2024 All rights reserved |Designed by Prasanna V B</h3>
 
