@@ -113,7 +113,7 @@ type ArchiveContact struct {
     ReportingManager    string    `json:"reporting_manager"`
 }
 ```
-### API Routes
+## API Routes
 
 ## Authentication
 <ul>
