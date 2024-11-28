@@ -50,13 +50,12 @@ const Form = (props) => {
           <div className="form-group">
             <label htmlFor="phone">Phone:</label>
             <input
-              type="number"
+              type="tel"
               id="phone"
               name="contactphonenumber"
               value={formData.contactphonenumber}
               placeholder="Enter phone number"
-              minLength={10}
-              maxLength={10}
+              pattern="\d{10}" 
               required
               onChange={formDataChange}
             />

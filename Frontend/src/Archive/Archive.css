@@ -17,9 +17,13 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
+.Archive-btns
+{
+    display: flex;
+    justify-content: space-between;
+}
 .Archive-btns button
 {
-    background-color: #8A2BE2;
     color: white;
     cursor: pointer;
     border: none;
@@ -30,8 +34,21 @@
     transition: 0.5s background-color;
 }
 
-.Archive-btns button:hover {
+.Archive-btns button:first-child
+{
+    background-color: #8A2BE2;
+}
+
+.Archive-btns button:first-child:hover {
     background-color: #7A1BDB;
+}
+.Archive-btns button:last-child
+{
+    background-color: #C70000;
+}
+
+.Archive-btns button:last-child:hover {
+    background-color: #8B0000 ;
 }
 @media (max-width: 768px) {
     .Archive {
