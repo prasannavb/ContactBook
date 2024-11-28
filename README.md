@@ -10,6 +10,7 @@ Welcome to the **Contact List Application**, a user-friendly platform that allow
 3. [Tech Stack](#tech-stack)  
 4. [Folder Structure](#folder-structure)  
 5. [Database Schema](#database-schema)  
+6. [API Routes](#api-routes)  
 
 
 ## **Demo**
@@ -112,5 +113,23 @@ type ArchiveContact struct {
     ReportingManager    string    `json:"reporting_manager"`
 }
 ```
+### API Routes
+
+## Authentication
+<ul>
+	<li><code>POST /login</code>:Login to existing account</li>
+	<li><code>POST /signup</code>:Register as  a new user</li>
+</ul>
+
+## Contacts
+<ul>
+	<li><code>POST /addcontact</code>Add a new contact</li>
+	<li><code>GET /getcontacts/:userId</code>Fetch all exisiting contacts of that user</li>
+	<li><code>PUT /updatecontact</code> Update contact details</li>
+	<li><code>DELETE /deletecontact/:id</code> Delete a contact</li>
+	<li><code>GET /archivecontacts/:userId</code> Fetch all contacts from archive</li>
+	<li><code>POST /restorecontact</code> Restore the contacts from archive</li>
+	<li><code>DELETE /deletearchivecontact/:id</code> Permanantely delete a contact from archive</li>
+</ul>
 <h3>Copyright ©2024 All rights reserved |Designed by Prasanna V B</h3>
 
