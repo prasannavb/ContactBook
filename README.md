@@ -1,6 +1,6 @@
 # Contact List Application
 
-Welcome to the **Contact List Application**, a user-friendly platform that allows you to manage and organize your contacts effortlessly. This application offers features like user authentication, adding and managing contacts, viewing archived (recently deleted) contacts, and searching through contacts with various filters.
+Welcome to the **Contact List Application**, a user-friendly platform that allows you to manage and organize your contacts effortlessly. This application offers features like user authentication, adding and managing contacts, viewing archived (recently deleted) contacts,restoring contacts from archive and searching through contacts with various filters.
 
 ---
 
