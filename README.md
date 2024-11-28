@@ -57,22 +57,22 @@ The demo of the website is hosted locally using Docker. Clone the repository and
 ## **Folder Structure**
 ```
 project-root/
-├── Frontend/              # Frontend React application
-│   ├── src/              # React source code
-│   ├── public/           # Static assets
-│   └── package.json      # Client-side dependencies
-├── Backend/              # Backend Go application
-│   ├── controllers/      # API route handlers
-│   ├── models/           # Database models (GORM)
-│   ├── database/         # Database connection configuration
-│   │   └── connection.go # Database connection setup
-│   ├── main.go           # Application entry point
-│   └── go.mod            # Backend dependencies
-├── docker-compose.yml    # Docker configuration
-├── .env                  # Environment variables
-└── README.md             # Documentation
+├── Frontend/                    # Frontend React application
+│   ├── src/                     # React source code
+│   ├── public/                  # Static assets
+│   ├── package.json             # Client-side dependencies
+│   ├── Dockerfile               # Dockerfile for Frontend
+├── Backend/                     # Backend Go application
+│   ├── controllers/             # API route handlers
+│   ├── models/                  # Database models (GORM)
+│   ├── database/                # Database connection configuration
+│   │   └── connection.go        # Database connection setup
+│   ├── main.go                  # Application entry point
+│   ├── go.mod                   # Backend dependencies
+│   ├── Dockerfile               # Dockerfile for Backend
+│   └── .env                     # Backend environment variables
+└── README.md                    # Documentation
 ```
-
 
 ### Database Schema
 
