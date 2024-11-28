@@ -136,7 +136,7 @@ const Archive = () => {
               />
               <h2 className="no-contact-text">No contacts available</h2>
               <p className="no-contact-description">
-                Add new contacts to see them here!
+                Recently deleted contacts will show up here!
               </p>
             </div>
           )}
