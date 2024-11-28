@@ -32,6 +32,7 @@ The demo of the website is hosted locally using Docker. Clone the repository and
 ### **Archive Management:**
 - View recently deleted contacts in an **archive**.
 - Users can restore the contacts back from **archive**
+- Users can permanantely delete the contacts in **archive** 
 
 ### **Design and Usability:**
 - A clean, responsive user interface designed for simplicity and efficiency.  
