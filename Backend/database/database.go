@@ -1,29 +1,47 @@
 package database
 
 import (
-	"gorm.io/driver/postgres"
+    "log"
+    "os"
+    "backend/models"
+    "gorm.io/driver/postgres"
     "gorm.io/gorm"
-	"log"
-	"backend/models"
+    "github.com/joho/godotenv"  
 )
 
 var DB *gorm.DB
 
-func ConnectDatabase(){
+func ConnectDatabase() {
+    // Load environment variables
+    err := godotenv.Load()
+    if err != nil {
+        log.Fatal("Error loading .env file")
+    }
 
-	var err error
-	dsn := "host=localhost user=postgres password=postgres dbname=contactApp port=5432 sslmode=disable"
-	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
+    // Retrieve environment variables
+    dbHost := os.Getenv("DB_HOST")
+    dbUser := os.Getenv("DB_USER")
+    dbPassword := os.Getenv("DB_PASSWORD")
+    dbName := os.Getenv("DB_NAME")
+    dbPort := os.Getenv("DB_PORT")
 
-	if err != nil {
-		log.Println("Failed to connect to database:", err)
-		DB = nil 
-		return
-	}
+    var dbError error
 
-	err = DB.AutoMigrate(&models.User{},&models.Contact{},&models.ArchiveContact{})
-	if err != nil {
-		log.Println("Failed to migrate database:", err)
-		DB = nil
-	}
+    // Build the connection link (dsn)
+    dsn := "host=" + dbHost + " user=" + dbUser + " password=" + dbPassword + " dbname=" + dbName + " port=" + dbPort + " sslmode=disable"
+
+    // Open the database connection
+    DB, dbError = gorm.Open(postgres.Open(dsn), &gorm.Config{})
+    if dbError != nil {
+        log.Println("Failed to connect to database:", dbError)
+        DB = nil
+        return
+    }
+
+    // Migrating the models
+    err = DB.AutoMigrate(&models.User{}, &models.Contact{}, &models.ArchiveContact{})
+    if err != nil {
+        log.Println("Failed to migrate database:", err)
+        DB = nil
+    }
 }

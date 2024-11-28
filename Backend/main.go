@@ -35,6 +35,7 @@ func main(){
 	router.PUT("/updatecontact", controllers.UpdateContact)
 	router.GET("/archivecontacts/:userId",controllers.ArchiveContact)
 	router.POST("/restorecontact",controllers.RestoreContact)
+	router.DELETE("/deletearchivecontact/:id",controllers.DeleteArchiveContacts)
 	router.Run(":8080")
 
 } 

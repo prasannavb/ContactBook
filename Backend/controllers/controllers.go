@@ -215,3 +215,23 @@ func RestoreContact(c *gin.Context){
 		c.JSON(http.StatusOK, gin.H{"message":"Contact restored successfully"})
 
     }
+	func DeleteArchiveContacts(c *gin.Context) {
+		id := c.Param("id")
+		var archivecontact models.ArchiveContact
+	
+		result := database.DB.Where("id = ?", id).Delete(&archivecontact)
+		
+		if result.Error != nil {
+			log.Println("Error deleting contact:", result.Error)
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to delete contact"})
+			return
+		}
+	
+		if result.RowsAffected == 0 {
+			c.JSON(http.StatusNotFound, gin.H{"error": "Contact not found or already deleted"})
+			return
+		}
+	
+		c.JSON(http.StatusOK, gin.H{"message": "Successfully deleted contact", "id": archivecontact.ID})
+	}
+	
