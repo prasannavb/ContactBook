@@ -11,6 +11,9 @@ import Card from "../Card/Card"
 //CSS
 import './Home.css'
 
+//Images
+import Nocontact from "../assets/Nocontact.webp"
+
 const Home=()=>
 {
     const [modalOpen,setModal]=useState(false)
@@ -163,7 +166,7 @@ const Home=()=>
 
                 <div className="no-contact-container">
                     <img
-                        src="https://cdni.iconscout.com/illustration/premium/thumb/contact-us-illustration-download-in-svg-png-gif-file-formats--call-logo-laptop-helping-customer-service-pack-network-communication-illustrations-2912020.png"
+                        src={Nocontact}
                         alt="No contacts available"
                         className="no-contact-image"
                     />

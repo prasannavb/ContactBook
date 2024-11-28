@@ -6,6 +6,10 @@ import axios from 'axios';
 //CSS
 import './Login.css';
 
+//Image
+import contactLogo from "../assets/contactLogo.webp"
+import contactBook from "../assets/contactBook.webp"
+
 const Login = () => {
 
     const [formData,setFormData]=useState({email:'',password:''})
@@ -79,7 +83,7 @@ const Login = () => {
                 <div className="Login-section-left">
                     <div className="Login-navbar">
                         <img
-                            src="https://cdn3d.iconscout.com/3d/premium/thumb/book-reading-schedule-3d-icon-download-in-png-blend-fbx-gltf-file-formats--study-learning-studying-school-and-education-pack-stationary-icons-7864745.png?f=webp"
+                            src={contactLogo}
                             alt="Logo"
                         />
                         <h4>Contact Book</h4>
@@ -114,7 +118,7 @@ const Login = () => {
                 </div>
                 <div className="Login-section-right">
                     <img
-                        src="https://cdn3d.iconscout.com/3d/premium/thumb/contact-book-3d-illustration-download-in-png-blend-fbx-gltf-file-formats--phonebook-contacts-communication-user-interface-pack-illustrations-4352344.png"
+                        src={contactBook}
                         alt="Illustration"
                     />
                 </div>

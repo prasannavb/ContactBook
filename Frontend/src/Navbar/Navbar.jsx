@@ -4,6 +4,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 // CSS
 import './Navbar.css';
 
+//Images
+import contactLogo from "../assets/contactLogo.webp"
+
 const Navbar = () => {
     const navigate = useNavigate();
     const loc = useLocation();
@@ -17,7 +20,7 @@ const Navbar = () => {
         <div className="Navbar">
             <div className="Navbar-Logo-div">
                 <img
-                    src="https://cdn3d.iconscout.com/3d/premium/thumb/book-reading-schedule-3d-icon-download-in-png-blend-fbx-gltf-file-formats--study-learning-studying-school-and-education-pack-stationary-icons-7864745.png?f=webp"
+                    src={contactLogo}
                     alt="Company Logo"
                     className="Navbar-Logo"
                 />
